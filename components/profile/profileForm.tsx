@@ -1,12 +1,10 @@
+import ProfileHeader from "./profileHeader";
 
-import { auth } from '@/auth'
-
-const ProfileForm = async() => {
-
-    const session = await auth()
-
+const ProfileForm = async () => {
   return (
-    <div>ProfileForm</div>
-  )
-}
-export default ProfileForm
+    <div className="p-5">
+      <ProfileHeader />
+    </div>
+  );
+};
+export default ProfileForm;

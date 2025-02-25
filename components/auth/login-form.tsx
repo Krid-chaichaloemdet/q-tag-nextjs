@@ -10,6 +10,8 @@ import { FormSuccess } from "./form-success";
 import { FormError } from "./form-error";
 import { useRouter } from "next/navigation";
 import GoogleLoginButton from "./google-button";
+import Link from "next/link";
+import Image from "next/image";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -47,35 +49,71 @@ const LoginForm = () => {
   };
 
   return (
-      <div>
-
-    <form className="p-10" onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>Email:</label>
-        <input
-          placeholder="johndoe@email.com"
-          type="email"
-          {...register("email")}
+    <div className="bg-[#FF4357] h-screen flex items-start justify-center pt-[10%]">
+      <div className="bg-white rounded-md  w-[90%] h-[80%] relative  flex flex-col items-center">
+        <Image
+          className="absolute right-1 pt-1 pl-1"
+          src="/close-circle.svg"
+          alt="Close icon"
+          width={30}
+          height={30}
         />
-        {errors.email && <p>{errors.email.message}</p>}
-      </div>
 
-      <div>
-        <label>Password:</label>
-        <input type="password" {...register("password")} />
-        {errors.password && <p>{errors.password.message}</p>}
-      </div>
+        <label
+          className="font-bold text-[30px] w-full flex items-center justify-center pt-[5%]"
+          htmlFor=""
+        >
+          Log in
+        </label>
+        <form className="p-10 flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <input
+              className="lg:min-w-[26rem] px-[0.5rem] py-[0.75rem] border-[0.2rem] border-[#CACACA] rounded-[0.75rem] font-semibold text-[#818181]"
+              placeholder="your e-mail"
+              type="email"
+              {...register("email")}
+            />
+            {errors.email && (
+              <p className="text-red-500">{errors.email.message}</p>
+            )}
+          </div>
 
-      <FormSuccess message={success} />
-      <FormError message={error} />
-      <button type="submit" className="w-full" disabled={loading}>
-        {loading ? "Loading..." : "Login"}
-      </button>
-      <hr />
-    </form>
+          <div>
+            <input
+              className="lg:min-w-[26rem] px-[0.5rem] py-[0.75rem] border-[0.2rem] border-[#CACACA] rounded-[0.75rem] font-semibold text-[#818181]"
+              type="password"
+              {...register("password")}
+            />
+            {errors.password && (
+              <p className="text-red-500">{errors.password.message}</p>
+            )}
+          </div>
+
+          <FormSuccess message={success} />
+          <FormError message={error} />
+          <button
+            type="submit"
+            className="bg-[#FF4357] w-full rounded-3xl px-[0.5rem] py-[0.75rem] text-white font-semibold"
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Login"}
+          </button>
+          <hr />
+        </form>
+        <div className="flex flex-col w-full justify-center items-center gap-[0.5rem]">
+          <div className="flex flex-row gap-[0.5rem]">
+            <p>Need an account? </p>
+            <Link href={"/auth/register"}>Register</Link>
+          </div>
+          <div className="flex flex-row w-full justify-center items-center">
+            <div className="w-full h-[0.2rem] bg-[#CCCCCC]"></div>
+            <p className="mx-[1rem]">or</p>
+            <div className="w-full h-[0.2rem] bg-[#CCCCCC]"></div>
+          </div>
+        </div>
         <GoogleLoginButton />
+      </div>
     </div>
-
   );
 };
 
