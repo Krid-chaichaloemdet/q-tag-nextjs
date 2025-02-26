@@ -4,7 +4,7 @@ import { prisma } from "./prisma/prisma";
 import authConfig from "./auth.config";
 import { getUserById } from "./data/user";
 import { getAccountByUserId } from "./data/account";
-
+import { redirect } from 'next/navigation'
 export const {
   auth,
   handlers: { GET, POST },
@@ -19,16 +19,15 @@ export const {
         if( account?.provider !== 'credentails') {
             return true
         }
-
         const existingUser = await getUserById(user.id ?? '')
         if(!existingUser?.emailVerified) {
             return false
         }
         return true
     },
-    async jwt({ token }) {
+    async jwt({ token,user }) {
+      
       if (!token.sub) return token;
-
       const existingUser = await getUserById(token.sub);
       if (!existingUser) return token;
 
@@ -38,17 +37,27 @@ export const {
       token.name = existingUser.name;
       token.email = existingUser.email;
       token.image = existingUser.image;
-      return token;
+      token.role = existingUser.role    
+      return {
+        ...token, role: existingUser?.role
+      }
     },
     async session({ token, session }) {
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: token.sub,
-          isOauth: token.isOauth,
-        },
+      session.user = {
+        ...session.user,
+        role: token.role,
       };
+      return session
+   
     },
+    async redirect({ url, baseUrl }) {
+    // Allows relative callback URLs
+    if (url.startsWith("/")) return `${baseUrl}${url}`
+
+    // Allows callback URLs on the same origin
+    if (new URL(url).origin === baseUrl) return url
+
+    return baseUrl
+  }
   },
 });

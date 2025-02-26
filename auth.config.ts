@@ -24,9 +24,9 @@ export default {
                  if(!user || !user.password || !user.email){
                     return null
                  }
-
                  const passwordMatch = await bcrypt.compare(password, user.password)
                  if(passwordMatch) {
+                    console.log("authoraizw", user)
                     return user
                  }
                  return null

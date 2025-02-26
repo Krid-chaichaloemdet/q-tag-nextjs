@@ -52,8 +52,10 @@ const RegisterForm = () => {
 
   return (
     <div className="bg-[#FF4357] h-screen flex flex-col items-center justify-center pt-[10%] ">
+      <div className="bg-white rounded-md  w-[90%] h-[80%] relative  flex flex-col items-center">
+
       <form
-        className="bg-white rounded-md  w-[90%] h-[80%] relative  flex flex-col items-center"
+        className=""
         onSubmit={handleSubmit(onSubmit)}
       >
         <Link href={"/"}>
@@ -114,8 +116,8 @@ const RegisterForm = () => {
           </button>
           <div className="flex flex-col w-full justify-center items-center gap-[0.5rem]">
           <div className="flex flex-row gap-[0.5rem]">
-            <p>Need an account? </p>
-            <Link href={"/auth/register"}>Register</Link>
+            <p>Aready has an account? </p>
+            <Link href={"/auth/login"}>Login</Link>
           </div>
           <div className="flex flex-row w-full justify-center items-center">
             <div className="w-full h-[0.2rem] bg-[#CCCCCC]"></div>
@@ -123,9 +125,10 @@ const RegisterForm = () => {
             <div className="w-full h-[0.2rem] bg-[#CCCCCC]"></div>
           </div>
         </div>
-      <GoogleLoginButton />
 
       </form>
+      <GoogleLoginButton />
+      </div>
  
     </div>
   );

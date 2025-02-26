@@ -33,7 +33,7 @@ export default function Home() {
                 </p>
               </div>
               <div className={`lg:mt-[4rem] mt-[2rem]`}>
-                <Link href="/createorder">
+                <Link href="/user/order">
                   <button
                     className={`bg-[#FF4357] px-[2.5rem] py-[0.75rem] rounded-full`}
                   >

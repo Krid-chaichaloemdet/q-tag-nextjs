@@ -1,1 +1,1 @@
-export const privateRoutes = ["/user/profile", "/user/order"]
+export const privateRoutes = ["/user/profile", "/user/order","/staff/admin", "/staff/prepress"]
