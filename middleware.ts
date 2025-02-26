@@ -18,9 +18,8 @@ export default auth(async (req) => {
   if (isApiRoute) {
     return;
   }
-  console.log(isLoggedIn)
   if(isLoggedIn && isAuthRoute){
-    return Response.redirect(`http://localhost:3000/user/profile`)
+    return Response.redirect(`${url}/user/profile`)
   }
   if (!isLoggedIn && isPrivateRoute) {
     return Response.redirect(`${url}/auth/login`);

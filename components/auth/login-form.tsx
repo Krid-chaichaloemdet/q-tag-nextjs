@@ -32,7 +32,6 @@ const LoginForm = () => {
   });
 
   const onSubmit = (data: any) => {
-    console.log(data);
     setLoading(true);
     loginAction(data).then((res) => {
       if (res.error) {
@@ -51,6 +50,7 @@ const LoginForm = () => {
   return (
     <div className="bg-[#FF4357] h-screen flex items-start justify-center pt-[10%]">
       <div className="bg-white rounded-md  w-[90%] h-[80%] relative  flex flex-col items-center">
+        <Link href={"/"}>
         <Image
           className="absolute right-1 pt-1 pl-1"
           src="/close-circle.svg"
@@ -58,6 +58,7 @@ const LoginForm = () => {
           width={30}
           height={30}
         />
+        </Link>
 
         <label
           className="font-bold text-[30px] w-full flex items-center justify-center pt-[5%]"
@@ -69,7 +70,7 @@ const LoginForm = () => {
           <div>
             <input
               className="lg:min-w-[26rem] px-[0.5rem] py-[0.75rem] border-[0.2rem] border-[#CACACA] rounded-[0.75rem] font-semibold text-[#818181]"
-              placeholder="your e-mail"
+              placeholder="Email"
               type="email"
               {...register("email")}
             />
@@ -80,6 +81,7 @@ const LoginForm = () => {
 
           <div>
             <input
+            placeholder="Password"
               className="lg:min-w-[26rem] px-[0.5rem] py-[0.75rem] border-[0.2rem] border-[#CACACA] rounded-[0.75rem] font-semibold text-[#818181]"
               type="password"
               {...register("password")}
@@ -98,7 +100,6 @@ const LoginForm = () => {
           >
             {loading ? "Loading..." : "Login"}
           </button>
-          <hr />
         </form>
         <div className="flex flex-col w-full justify-center items-center gap-[0.5rem]">
           <div className="flex flex-row gap-[0.5rem]">

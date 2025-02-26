@@ -11,6 +11,7 @@ import { FormError } from "./form-error";
 import { useRouter } from "next/navigation";
 import GoogleLoginButton from "./google-button";
 import Link from "next/link";
+import Image from "next/image";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -50,11 +51,27 @@ const RegisterForm = () => {
   };
 
   return (
-    <div>
-      <form className="p-10" onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="">Register</label>
+    <div className="bg-[#FF4357] h-screen flex flex-col items-center justify-center pt-[10%] ">
+      <form
+        className="bg-white rounded-md  w-[90%] h-[80%] relative  flex flex-col items-center"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <Link href={"/"}>
+            <Image
+                 className="absolute right-1 pt-1 pl-1"
+                 src="/close-circle.svg"
+                 alt="Close icon"
+                 width={30}
+                 height={30}
+                 />
+                 </Link>
+        <label
+        className="font-bold text-[30px] w-full flex items-center justify-center pt-[5%]"
+        htmlFor="">Register</label>
         <div>
-          <label>Email:</label>
+          <label
+          
+          >Email:</label>
           <input
             placeholder="johndoe@email.com"
             type="email"
@@ -71,30 +88,45 @@ const RegisterForm = () => {
 
         <div>
           <label>Password:</label>
-          <input type="password" {...register("password")} />
+          <input 
+          placeholder='Password'
+          type="password" {...register("password")} />
           {errors.password && <p>{errors.password.message}</p>}
         </div>
 
         <div>
           <label>Confirm Password:</label>
-          <input type="password" {...register("passwordConfirmation")} />
+          <input
+          placeholder='Confirm passwrod'
+          type="password" {...register("passwordConfirmation")} />
           {errors.passwordConfirmation && (
             <p>{errors.passwordConfirmation.message}</p>
           )}
         </div>
         <FormSuccess message={success} />
         <FormError message={error} />
-        <button type="submit" className="w-full" disabled={loading}>
-          {loading ? "Loading..." : "Register"}
-        </button>
-      </form>
+        <button
+            type="submit"
+            className="bg-[#FF4357] w-full rounded-3xl px-[0.5rem] py-[0.75rem] text-white font-semibold"
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Register"}
+          </button>
+          <div className="flex flex-col w-full justify-center items-center gap-[0.5rem]">
+          <div className="flex flex-row gap-[0.5rem]">
+            <p>Need an account? </p>
+            <Link href={"/auth/register"}>Register</Link>
+          </div>
+          <div className="flex flex-row w-full justify-center items-center">
+            <div className="w-full h-[0.2rem] bg-[#CCCCCC]"></div>
+            <p className="mx-[1rem]">or</p>
+            <div className="w-full h-[0.2rem] bg-[#CCCCCC]"></div>
+          </div>
+        </div>
       <GoogleLoginButton />
-      <div>
-        <div>Aleardy has an account?</div>
-        <button>
-          <Link href={"/auth/login"}>login</Link>
-        </button>
-      </div>
+
+      </form>
+ 
     </div>
   );
 };

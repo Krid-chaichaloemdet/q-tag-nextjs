@@ -11,10 +11,11 @@ const GoogleLoginButton = () => {
     undefined
   );
   return (
-    <form className="flex mt-4 bg-[#FF4357] rounded-3xl p-[0.5px] pr-2" action={dispatchGoogle}>
-      <button className="flex flex-row items-center gap-3 w-full">
-        <Image alt="google login" src={"/googleIcon.svg"} width={40} height={40} />
-        Continue with Google
+    <form className="flex mt-4 bg-[#FF4357] rounded-3xl p-[0.5px]  w-[85%]" action={dispatchGoogle}>
+      <button className="flex items-center gap-3 w-full text-white px-[0.5%] py-[3%]">
+        <Image className="rounded-full absolute " alt="google login" src={"/googleIcon.svg"} width={40} height={40} />
+  
+        <div className="flex justify-center w-[100%] font-bold"> Continue with Google</div>
       </button>
       <p>{errorMsgGoogle}</p>
     </form>

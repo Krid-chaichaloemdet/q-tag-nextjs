@@ -6,10 +6,11 @@ import Link from 'next/link'
 
 const ProfileHeader = async () => {
   const session = await auth();
+  console.log(session)
   return (
         <div className="p-5 flex gap-5">
           <Image
-            src={session?.user?.image || "/default-avatar.png"}
+            src={session?.user?.image || '/globe.svg'}
             width={50}
             height={50}
             alt=""
