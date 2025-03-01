@@ -26,7 +26,6 @@ export const {
         return true
     },
     async jwt({ token,user }) {
-      
       if (!token.sub) return token;
       const existingUser = await getUserById(token.sub);
       if (!existingUser) return token;
@@ -39,25 +38,29 @@ export const {
       token.image = existingUser.image;
       token.role = existingUser.role    
       return {
-        ...token, role: existingUser?.role
+        ...token, role: existingUser?.role ,memberType: existingUser.memberType,
+        credit: existingUser.credit, active : existingUser.active
       }
     },
     async session({ token, session }) {
       session.user = {
         ...session.user,
         role: token.role,
+        credit: token.credit,
+        memberType: token.memberType,
+        active: token.active
       };
       return session
    
     },
-    async redirect({ url, baseUrl }) {
-    // Allows relative callback URLs
-    if (url.startsWith("/")) return `${baseUrl}${url}`
+  //   async redirect({ url, baseUrl }) {
+  //   // Allows relative callback URLs
+  //   if (url.startsWith("/")) return `${baseUrl}${url}`
 
-    // Allows callback URLs on the same origin
-    if (new URL(url).origin === baseUrl) return url
+  //   // Allows callback URLs on the same origin
+  //   if (new URL(url).origin === baseUrl) return url
 
-    return baseUrl
-  }
+  //   return baseUrl
+  // }
   },
 });

@@ -7,21 +7,21 @@ import { useState } from "react";
 const HomeHeaderNav = () => {
   const [isOpenMobileNav, setIsOpenMobileNav] = useState<boolean>(false);
 
-
+  // text-[#FF4357]
   return (
     <div>
-      <nav className="flex h-[56px] bg-black text-white justify-between items-center px-5 py-10">
+      <nav className="flex z-40 h-[56px] bg-[#000000] opacity-80 text-white justify-between items-center px-5 py-10">
         <Link href={"/"}>
-        <Image alt="q-tag logo" height={100} width={100} src={"/logo.svg"} />
+        <Image alt="q-tag logo" height={100} width={100} src={"/home/logo.svg"} />
         </Link>
         <div className="flex gap-3 items-center">
           <Link href={"/user/profile"}>
             <Image
               alt="profile icon"
-              className="invert cursor-pointer"
+              className="text-white cursor-pointer"
               height={20}
               width={20}
-              src={"/profile.svg"}
+              src={"/home/profile.svg"}
             />
           </Link>
           <Link href={"/user/order"}>
@@ -30,7 +30,7 @@ const HomeHeaderNav = () => {
               className=" cursor-pointer"
               height={20}
               width={20}
-              src={"/cart.svg"}
+              src={"/home/cart.svg"}
             />
           </Link>
           <Image
@@ -39,7 +39,7 @@ const HomeHeaderNav = () => {
             className=" cursor-pointer"
             height={20}
             width={20}
-            src={"/more.svg"}
+            src={"/home/more.svg"}
           />
         </div>
         {isOpenMobileNav && <HomeMobileNavbar setIsOpenMobileNav={setIsOpenMobileNav}/>}

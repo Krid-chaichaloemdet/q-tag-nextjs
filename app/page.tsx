@@ -8,7 +8,7 @@ export default function Home() {
         <div className=" h-full w-screen overflow-y-scroll overflow-x-hidden">
           <div className="h-screen w-screen relative">
             <Image
-              src={"/homebg.svg"}
+              src={"/home/homebg.svg"}
               alt="BG"
               width={100}
               height={100}

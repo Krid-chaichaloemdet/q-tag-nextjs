@@ -53,7 +53,7 @@ const LoginForm = () => {
         <Link href={"/"}>
         <Image
           className="absolute right-1 pt-1 pl-1"
-          src="/close-circle.svg"
+          src="/auth/close-circle.svg"
           alt="Close icon"
           width={30}
           height={30}

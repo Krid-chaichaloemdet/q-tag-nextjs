@@ -40,6 +40,7 @@ model User {
   password      String?
   email         String?         @unique
   emailVerified DateTime?
+  credit        Decimal?
   role          UserRole   @default(CUSTOMER)
   memberType    MembershipTier @default(NON_MEMBER)
   active        UserStatus @default(ACTIVE)
@@ -114,16 +115,16 @@ model Authenticator {
 
 model Order {
   id  String @id @default(cuid())
-  skuId    Int
-  addressId Int
-  priceCalculationId String
-  userId   String
+  skuId    Int?
+  addressId Int?
+  priceCalculationId String?
+  userId   String?
   orderStatus orderStatus @default(NEW_ORDER)
-  deliveryMethod  DeliveryMethod
+  deliveryMethod  DeliveryMethod?
   promotionId Int?
   file   String?
-  totalPrice Decimal
-  quantity Int
+  totalPrice Decimal?
+  quantity Int?
   orderRemark String?
   prepressOwner  String?
   producerOwner String?
@@ -163,17 +164,17 @@ enum orderStatus {
 }
 
 model SKU {
-  skuId   Int @id @default(autoincrement())
-  skuName String
-  material TypeOfMaterial
-  coating  TypeOfCoating
-  offsetOrSticker OffsetOrSticker
-  quatityPerRollOrSheet QuantityPerRollOrSheet
-  quantity Int
-  unitPerPieceOrSet  UnitPerPieceOrSet
-  size   String
-  spacing   String
-  roundedCorner String
+  id   Int @id @default(autoincrement())
+  // skuName String?
+  material TypeOfMaterial?
+  coating  TypeOfCoating?
+  offsetOrSticker OffsetOrSticker?
+  quatityPerRollOrSheet QuantityPerRollOrSheet?
+  quantity Int?
+  unitPerPieceOrSet  UnitPerPieceOrSet?
+  size   String?
+  spacing   String?
+  roundedCorner String?
 }
 
 enum TypeOfMaterial {
