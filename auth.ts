@@ -4,7 +4,6 @@ import { prisma } from "./prisma/prisma";
 import authConfig from "./auth.config";
 import { getUserById } from "./data/user";
 import { getAccountByUserId } from "./data/account";
-import { redirect } from 'next/navigation'
 export const {
   auth,
   handlers: { GET, POST },
@@ -25,7 +24,7 @@ export const {
         }
         return true
     },
-    async jwt({ token,user }) {
+    async jwt({ token }) {
       if (!token.sub) return token;
       const existingUser = await getUserById(token.sub);
       if (!existingUser) return token;

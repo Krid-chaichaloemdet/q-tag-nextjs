@@ -15,7 +15,7 @@ export default {
             async authorize(credentials){
                 const validatedDate = LoginSchema.safeParse(credentials)
                 if(!validatedDate.success) return null;
-                const { email, password} = validatedDate.data
+                const { email,} = validatedDate.data
                  const user = await prisma.user.findFirst({
                     where: {
                         email: email
@@ -25,8 +25,7 @@ export default {
                     return null
                  }
                 //  const passwordMatch = await bcrypt.compare(password, user.password)
-                 if(passwordMatch) {
-                    console.log("authoraizw", user)
+                 if(user) {
                     return user
                  }
                  return null
