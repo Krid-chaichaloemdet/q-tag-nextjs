@@ -4,7 +4,6 @@ import * as z from "zod";
 import { LoginSchema } from "@/schemas";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
-import { error } from "console";
 import { prisma } from "@/prisma/prisma";
 
 export const loginAction = async (data: z.infer<typeof LoginSchema>) => {

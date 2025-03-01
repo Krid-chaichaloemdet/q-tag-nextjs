@@ -7,33 +7,26 @@ import { RegisterSchema } from "@/schemas"
 export const registerAction = async (data: z.infer<typeof RegisterSchema>) => {
 
     try {
-      // Validate the input data
       const validatedData = RegisterSchema.parse(data);
   
-      //  If the data is invalid, return an error
       if (!validatedData) {
         return { error: "Invalid input data" };
       }
   
-      //  Destructure the validated data
       const { email, name, password, passwordConfirmation } = validatedData;
   
-      // Check if passwords match
       if (password !== passwordConfirmation) {
         return { error: "Passwords do not match" };
       }
   
-      // Hash the password
       const hashedPassword = await bcrypt.hash(password, 10);
   
-      // Check to see if user already exists
       const userExists = await prisma.user.findFirst({
         where: {
           email,
         },
       });
   
-      // If the user exists, return an error
       if (userExists) {
         return { error: "Email already is in use. Please try another one." };
       }
@@ -41,7 +34,7 @@ export const registerAction = async (data: z.infer<typeof RegisterSchema>) => {
       const lowerCaseEmail = email.toLowerCase();
   
       // Create the user
-      const user = await prisma.user.create({
+       await prisma.user.create({
         data: {
           email: lowerCaseEmail,
           name,

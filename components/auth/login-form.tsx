@@ -13,6 +13,11 @@ import GoogleLoginButton from "./google-button";
 import Link from "next/link";
 import Image from "next/image";
 
+interface dataProps {
+  email: string;
+  password: string;
+}
+
 const LoginForm = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -31,7 +36,7 @@ const LoginForm = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data:dataProps) => {
     setLoading(true);
     loginAction(data).then((res) => {
       if (res.error) {

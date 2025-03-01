@@ -1,7 +1,4 @@
-import { auth } from "@/auth";
 import Image from "next/image";
-import { LogoutAction } from "@/actions/logoutAction";
-import { redirect } from "next/navigation";
 
 interface profileHeaderArrayProps {
   title: string;

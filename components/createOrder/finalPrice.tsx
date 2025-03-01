@@ -25,6 +25,13 @@ const FinalPrice = () => {
   return (
     <div>
       <div>Choose Your Option to pay</div>
+      {
+        memberPriceArray.map((data,i)=>{
+          return (
+            <div key={i}> {data.title} </div>
+          )
+        })
+      }
     </div>
   );
 };
