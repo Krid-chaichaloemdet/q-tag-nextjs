@@ -1,4 +1,3 @@
-import { auth } from "@/auth";
 import { LogoutAction } from "@/actions/logoutAction";
 const AdminWorkPage = () => {
   return (

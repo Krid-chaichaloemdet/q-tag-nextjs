@@ -13,6 +13,13 @@ import GoogleLoginButton from "./google-button";
 import Link from "next/link";
 import Image from "next/image";
 
+interface dataProps {
+  name: string;
+  email: string;
+  password: string;
+  passwordConfirmation: string;
+}
+
 const RegisterForm = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -34,7 +41,7 @@ const RegisterForm = () => {
   });
 
   // Define the submit handler
-  const onSubmit = (data: any) => {
+  const onSubmit = (data:dataProps) => {
     setLoading(true);
     registerAction(data).then((res) => {
       if (res.error) {
