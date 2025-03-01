@@ -38,7 +38,7 @@ export const registerAction = async (data: z.infer<typeof RegisterSchema>) => {
         data: {
           email: lowerCaseEmail,
           name,
-          password: hashedPassword,
+          // password: hashedPassword,
         },
       });
   
