@@ -1,7 +1,6 @@
 import authConfig from "./auth.config";
 import NextAuth from "next-auth";
 
-import { getServerSession } from "next-auth/next";
 
 import { privateRoutes } from "./route";
 const { auth } = NextAuth(authConfig);
