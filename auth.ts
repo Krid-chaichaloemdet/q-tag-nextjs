@@ -4,6 +4,8 @@ import { prisma } from "./prisma/prisma";
 import authConfig from "./auth.config";
 import { getUserById } from "./data/user";
 import { getAccountByUserId } from "./data/account";
+
+
 export const {
   auth,
   handlers: { GET, POST },
@@ -44,11 +46,11 @@ export const {
     async session({ token, session }) {
       session.user = {
         ...session.user,
-        role: token.role,
-        credit: token.credit,
-        memberType: token.memberType,
-        active: token.active
-      };
+        // role: token.role,
+        // credit: token.credit,
+        // memberType: token.memberType,
+        // active: token.active
+      }
       return session
    
     },
