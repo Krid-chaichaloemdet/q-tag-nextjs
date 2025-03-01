@@ -43,7 +43,8 @@ export const {
         credit: existingUser.credit, active : existingUser.active
       }
     },
-    async session({ token, session }) {
+    // async session({ token, session }) {
+    async session({  session }) {
       session.user = {
         ...session.user,
         // role: token.role,

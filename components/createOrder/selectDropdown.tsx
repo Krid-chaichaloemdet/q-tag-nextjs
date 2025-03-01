@@ -13,7 +13,8 @@ const SelectDropdown = () => {
     const fileInputRef = useRef(null);
 
     const handleButtonClick = () => {
-      fileInputRef.current?.click() ; 
+      // fileInputRef.current?.click() ; 
+      alert(' ควยไร ')
     };
 
   const dropdownArray: dropdownData[] = [
